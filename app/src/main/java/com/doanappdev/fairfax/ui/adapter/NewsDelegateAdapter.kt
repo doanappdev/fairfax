@@ -1,12 +1,15 @@
 package com.doanappdev.fairfax.ui.adapter
 
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.doanappdev.fairfax.R
 import com.doanappdev.fairfax.base.ItemView
 import com.doanappdev.fairfax.base.ViewTypeDelegateAdapter
 import com.doanappdev.fairfax.base.inflate
 import com.doanappdev.fairfax.data.models.NewsItem
+import com.jakewharton.rxbinding2.view.clicks
 import kotlinx.android.synthetic.main.item_news.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -30,11 +33,18 @@ class NewsDelegateAdapter : ViewTypeDelegateAdapter, AnkoLogger {
             abstractTxt.text = asset.theAbstract
             byLineTxt.text = asset.byLine
 
+            asset.findSmallestImage()
 
-//            Glide.with(context)
-//                    .load(photo.getUrl())
-//                    .placeholder(ContextCompat.getDrawable(context, R.drawable.ic_file_download_black_24dp))
-//                    .into(imageView)
+            info { "smallestImage Url : ${asset.smallestImage?.url}" }
+            info { "width : ${asset.smallestImage?.width}" }
+            info { "height : ${asset.smallestImage?.height}" }
+
+            Glide.with(context)
+                    .load(asset.smallestImage?.url)
+                    .placeholder(ContextCompat.getDrawable(context, R.mipmap.ic_launcher_round)) // temp placeholder in real app would use a different one
+                    .into(imageView)
+
+            this.clicks().subscribe { item.clickSubject.onNext(asset.url) }
         }
     }
 }

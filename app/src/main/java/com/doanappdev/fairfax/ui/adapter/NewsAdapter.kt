@@ -14,7 +14,8 @@ class NewsAdapter(private val viewItems: List<ItemView>) : RecyclerView.Adapter<
 
     init {
         // we can add other delegate adapters here to handle different view types
-        // eg. if we wanted to display image view with round borders
+        // eg. if we wanted to display items in recycler view we would create
+        //     delegateAdapters here
         delegateAdapters.put(ITEM_ASSET, NewsDelegateAdapter())
     }
 
