@@ -20,6 +20,8 @@ class NewsViewModel: ViewModel(), AnkoLogger {
     val isShowProgressBar = MutableLiveData<Boolean>()
     val itemClick = MutableLiveData<String>()
 
+    private val items = mutableListOf<ItemView>()
+
     private val disposables: CompositeDisposable = CompositeDisposable()
 
     fun getNewsArticles(repository: NewsRepository) {
@@ -35,9 +37,8 @@ class NewsViewModel: ViewModel(), AnkoLogger {
     }
 
     fun onSuccess(newsResponse: NewsResponse) {
-        val items = mutableListOf<ItemView>()
         newsResponse.assets.map { items.add(NewsItem(it)) }
-        registerClickEvents(items)
+        registerClickEvents()
         sortNewsItems(items)
     }
 
@@ -65,7 +66,7 @@ class NewsViewModel: ViewModel(), AnkoLogger {
      * filter list for instance of NewsItem then map click events
      * for each items and merge them into a single event
      */
-    fun registerClickEvents(items: MutableList<ItemView>) {
+    fun registerClickEvents() {
         val clicks = items.filterIsInstance<NewsItem>()
                 .map { it.clickSubject.hide() }
                 .merge()

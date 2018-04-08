@@ -37,6 +37,11 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel?.registerClickEvents()
+    }
+
     override fun onStop() {
         super.onStop()
         viewModel?.clear()

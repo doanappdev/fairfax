@@ -45,7 +45,7 @@ data class Asset(
 
         relatedImages.forEach {
             if (it.height != 0) {
-                when((it.width <= minWidth && it.height <= minHeight)) {
+                when(it.width <= minWidth && it.height <= minHeight) {
                     true -> {
                         minWidth = it.width
                         minHeight = it.height
