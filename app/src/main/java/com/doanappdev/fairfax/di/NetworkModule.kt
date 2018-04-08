@@ -11,8 +11,6 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-    //https://bruce-v2-mob.fairfaxmedia.com.au/1/coding_test/13ZZQX/full
-
     val BASE_URL = "https://bruce-v2-mob.fairfaxmedia.com.au/"
 
     @[Provides Singleton]

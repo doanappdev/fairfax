@@ -24,12 +24,4 @@ class AppModule(val application: Application) {
     fun provideLocationManager(): LocationManager {
         return application.getSystemService(Context.LOCATION_SERVICE) as LocationManager
     }
-
-//    @Provides
-//    fun provideTransactionsRepository(service: CBAService) : TransactionRepository = TransactionRepositoryImpl(service)
-//
-//    @Provides
-//    fun provideTransactionsPresenter(repository: TransactionRepository) : TransactionsContract.Presenter = TransactionsPresenter(repository)
-
-
 }

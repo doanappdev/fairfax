@@ -35,10 +35,6 @@ class NewsDelegateAdapter : ViewTypeDelegateAdapter, AnkoLogger {
 
             asset.findSmallestImage()
 
-            info { "smallestImage Url : ${asset.smallestImage?.url}" }
-            info { "width : ${asset.smallestImage?.width}" }
-            info { "height : ${asset.smallestImage?.height}" }
-
             Glide.with(context)
                     .load(asset.smallestImage?.url)
                     .placeholder(ContextCompat.getDrawable(context, R.mipmap.ic_launcher_round)) // temp placeholder in real app would use a different one

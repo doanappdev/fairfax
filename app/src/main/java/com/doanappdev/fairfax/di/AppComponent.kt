@@ -25,6 +25,4 @@ interface ApplicationComponent {
         fun repositoryModule(repositoryModule: RepositoryModule) : Builder
         fun build() : ApplicationComponent
     }
-
-    //fun getCBAService() : CBAService
 }

@@ -8,6 +8,7 @@ class FairfaxApp : Application() {
         lateinit var appComponent: ApplicationComponent
     }
 
+    // example of injecting object into this class
     //@Inject lateinit var locationManager: LocationManager
 
     override fun onCreate() {
